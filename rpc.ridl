@@ -1,0 +1,22 @@
+webrpc = v1
+
+name = twitter-auth-service     
+version = v0.0.1
+
+struct AuthRequest
+  - token: string
+  - verifier: string
+  - messageHash: string
+
+struct AuthResponse
+  - messageHash: string
+  - signature: string
+  - authId: string
+  - email: string
+
+struct AuthURLRequest
+  - oauthCallback: string
+
+service TwitterAuthService
+  - Auth(request: AuthRequest) => (response: AuthResponse)
+  - AuthURL(request: AuthURLRequest) => (authURL: string)
